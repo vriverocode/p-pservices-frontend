@@ -4,7 +4,7 @@ import axios from 'axios'
 const backendUrl = process.env.API_BASE_URL;
 
 const api = axios.create({
-  baseURL: `${backendUrl}/api`,
+  baseURL: `${backendUrl}`,
   withCredentials: true,
   headers: {
     'Accept': 'application/json',

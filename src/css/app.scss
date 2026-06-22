@@ -1,1 +1,115 @@
 // app global css
+
+.text-dark-blue {
+  color: #162438 !important;
+  /* Color azul oscuro/grisáceo de la imagen */
+}
+
+.text-primary-soft {
+  color: #53637a !important;
+  /* Azul más suave para los links */
+}
+
+.text-blue-light {
+  color: var(--brand-blue-light);
+}
+
+.text-blue-dark {
+  color: var(--brand-blue-dark);
+}
+
+.text-red-light {
+  color: var(--brand-red-light);
+}
+
+.text-red-dark {
+  color: var(--brand-red-dark);
+}
+
+.bg-blue-light {
+  background-color: var(--brand-blue-light);
+}
+
+.bg-blue-dark {
+  background-color: var(--brand-blue-dark);
+}
+
+.bg-red-light {
+  background-color: var(--brand-red-light);
+}
+
+.bg-red-dark {
+  background-color: var(--brand-red-dark);
+}
+
+.login-btn {
+  // background-color: #162438 !important;
+  border-radius: 4px;
+  font-size: 1.05rem;
+  text-transform: none;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+/* Custom Input Styling Global */
+.custom-input {
+  border-bottom: 1px solid #dcdcdc;
+  transition: border-color 0.3s ease;
+}
+
+.custom-input:focus-within {
+  border-bottom: 2px solid #162438;
+}
+
+.custom-input .q-field__control {
+  padding: 0 !important;
+  min-height: 40px;
+  height: 40px;
+}
+
+.custom-input .q-field__native {
+  padding: 0 !important;
+  font-size: 1rem;
+  color: #333;
+}
+
+.custom-input .q-field__native::placeholder {
+  color: #a0a0a0;
+  opacity: 1;
+}
+
+.custom-input .q-field__append,
+.custom-input .q-field__prepend {
+  padding: 0 !important;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.custom-input .q-field__prepend {
+  padding-right: 12px !important;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.q-field--dense.custom-input .q-field__bottom {
+  position: absolute;
+}
+
+:root {
+  /* Paleta P&P Services */
+  --brand-red-light: #eb0606;
+  --brand-red-dark: #9d0a0e;
+
+  --brand-blue-light: #2ea1ff;
+  --brand-blue-medium: #005bc4;
+  --brand-blue-dark: #0a2540;
+  /* Neutros del sitio */
+  --text-primary: #162438;
+  --text-secondary: #53637a;
+  --bg-light: #fafbfc;
+  /* Degradado característico */
+  --brand-gradient: linear-gradient(to right, var(--brand-red-light), var(--brand-blue-light));
+}
