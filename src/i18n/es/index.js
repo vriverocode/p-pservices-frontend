@@ -15,7 +15,25 @@ export default {
     create_account: 'Crear cuenta',
     success_msg: 'Bienvenido a P&P Services',
     error_msg: 'Error al iniciar sesión. Verifica tus credenciales.',
-    language: 'Idioma'
+    language: 'Idioma',
+    unverified_email: 'Debes verificar tu correo electrónico antes de iniciar sesión. Revisa tu bandeja de entrada o solicita un nuevo enlace.',
+    verify_email_subject: 'Verifica tu dirección de correo electrónico',
+    resend_verification_email_subject: 'Reenviar verificación de correo electrónico',
+    email_verified_success: '¡Correo electrónico verificado exitosamente!',
+    email_verification_expired: 'El enlace de verificación ha expirado.',
+    email_verification_invalid: 'El enlace de verificación es inválido o ha expirado.',
+    email_verification_already_verified: 'Tu correo electrónico ya ha sido verificado.',
+    email_verification_link_not_found: 'No se encontró el enlace de verificación.',
+    email_verification_user_not_found: 'No se encontró ningún usuario con este enlace de verificación.',
+    email_verification_generic_error: 'Ocurrió un error inesperado al verificar el correo electrónico.',
+    verification_modal: {
+      title: 'Correo no verificado',
+      description: 'Debes verificar tu correo electrónico antes de continuar. Haz clic en el botón para reenviar el enlace de verificación.',
+      resend_btn: 'Reenviar código de verificación',
+      close_btn: 'Cerrar',
+      success_msg: 'Enlace de verificación reenviado exitosamente',
+      error_msg: 'Error al reenviar el enlace de verificación'
+    },
   },
   register: {
     title: 'Crear Cuenta',

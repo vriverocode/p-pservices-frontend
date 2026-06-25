@@ -15,7 +15,25 @@ export default {
     create_account: 'Create account',
     success_msg: 'Welcome to P&P Services',
     error_msg: 'Error logging in. Check your credentials.',
-    language: 'Language'
+    language: 'Language',
+    unverified_email: 'You must verify your email address before logging in. Check your inbox or request a new link.',
+    verify_email_subject: 'Verify your email address',
+    resend_verification_email_subject: 'Resend email verification',
+    email_verified_success: 'Email verified successfully!',
+    email_verification_expired: 'The verification link has expired.',
+    email_verification_invalid: 'The verification link is invalid or has expired.',
+    email_verification_already_verified: 'Your email address has already been verified.',
+    email_verification_link_not_found: 'The verification link was not found.',
+    email_verification_user_not_found: 'No user was found with this verification link.',
+    email_verification_generic_error: 'An unexpected error occurred while verifying your email.',
+    verification_modal: {
+      title: 'Email not verified',
+      description: 'You must verify your email address before continuing. Click the button to resend the verification link.',
+      resend_btn: 'Resend verification code',
+      close_btn: 'Close',
+      success_msg: 'Verification link resent successfully',
+      error_msg: 'Error resending verification link'
+    }
   },
   register: {
     title: 'Create Account',

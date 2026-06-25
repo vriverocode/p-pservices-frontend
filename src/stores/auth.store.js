@@ -20,47 +20,44 @@ export const useAuthStore = defineStore('auth', () => {
             delete api.defaults.headers.common['Authorization'];
         }
     };
-
+    const rememberUserLogin = (credentials) => {
+        if (credentials.remember) {
+            localStorage.setItem('remember_email', credentials.email);
+        }
+    }
     const clearSession = () => {
         user.value = null;
         setToken(null);
     };
     const login = async (credentials) => {
         try {
-            if (!Platform.is.capacitor) {
-                await api.get('/sanctum/csrf-cookie');
-            }
-            const payload = {
-                ...credentials,
-                is_mobile: Platform.is.capacitor
-            };
+            const response = await api.post('/api/login', credentials);
 
-            const response = await api.post('/api/login', payload);
-
+            console.log(response)
+            rememberUserLogin(credentials);
             const responseData = response.data.data;
-
             user.value = responseData.user;
-
             if (responseData.token) {
                 setToken(responseData.token);
             }
 
             return responseData;
         } catch (error) {
+            console.log(error)
+
             clearSession();
             throw error;
         }
     };
     const fetchUser = async () => {
         try {
-            if (Platform.is.capacitor && !token.value) {
+            if (!token.value) {
                 clearSession();
                 return false;
             }
 
-            if (Platform.is.capacitor && token.value) {
-                api.defaults.headers.common['Authorization'] = `Bearer ${token.value}`;
-            }
+            // Asegurarse de que el token esté en los headers de Axios
+            api.defaults.headers.common['Authorization'] = `Bearer ${token.value}`;
 
             const response = await api.get('/api/user');
             user.value = response.data.data;
@@ -108,6 +105,11 @@ export const useAuthStore = defineStore('auth', () => {
         }
     };
 
+    const resendVerificationEmail = async (email) => {
+        await api.post('/api/email/resend', { email });
+        return true;
+    }
+
     return {
         user,
         token,
@@ -117,6 +119,7 @@ export const useAuthStore = defineStore('auth', () => {
         login,
         register,
         fetchUser,
-        logout
+        logout,
+        resendVerificationEmail
     };
 });

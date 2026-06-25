@@ -8,25 +8,41 @@ const routes = [
     beforeEnter: guest,
     children: [
       {
-        path: 'login', component: () => import('pages/Auth/LoginPage.vue'),
+        path: '/login', component: () => import('pages/Auth/LoginPage.vue'),
         meta: {
           title: 'Bienvenido'
         },
       },
       {
-        path: 'register', component: () => import('pages/Auth/RegisterPage.vue'),
+        path: '/register', component: () => import('pages/Auth/RegisterPage.vue'),
         meta: {
           title: 'Bienvenido'
         },
-      }
+      },
+
     ],
 
+  },
+  {
+    path: '/verify-email', component: () => import('pages/Auth/VerifyEmailPage.vue'),
+    beforeEnter: guest,
+    meta: {
+      title: 'Verificar Email'
+    },
   },
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     beforeEnter: auth,
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+    children: [
+      {
+        path: '/dashboard',
+        component: () => import('pages/Client/Dashboard/Dashboard.vue'),
+        meta: {
+          title: 'Inicio'
+        },
+      }
+    ],
   },
 
   {
