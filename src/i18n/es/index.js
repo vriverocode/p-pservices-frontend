@@ -15,6 +15,7 @@ export default {
     create_account: 'Crear cuenta',
     success_msg: 'Bienvenido a P&P Services',
     error_msg: 'Error al iniciar sesión. Verifica tus credenciales.',
+    error_network: 'Error al iniciar sesión. Por favor, verifica tu conexión a internet.',
     language: 'Idioma',
     unverified_email: 'Debes verificar tu correo electrónico antes de iniciar sesión. Revisa tu bandeja de entrada o solicita un nuevo enlace.',
     verify_email_subject: 'Verifica tu dirección de correo electrónico',
@@ -66,5 +67,41 @@ export default {
     login: 'Inicia sesión',
     success_msg: 'Cuenta creada exitosamente',
     error_msg: 'Error al crear la cuenta. Verifica los datos e intenta nuevamente.'
+  },
+  dashboard: {
+    welcome: {
+      greeting: 'Bienvenido de nuevo',
+      hello: 'Hola,'
+    },
+    new_project_card: {
+      label: 'Nuevo proyecto',
+      title: 'Cotizar Servicio',
+      description: 'Obtén una cotización al instante y asegura tu cita en nuestro taller automotriz.',
+      btn: 'Iniciar cotización'
+    },
+    services: {
+      title: 'Servicios',
+      subtitle: 'Selecciona el servicio que deseas',
+      premium_title: 'Servicios Premium',
+      view_all: 'Ver todos',
+      from: 'Desde',
+      featured: 'Destacado',
+      error_msg: 'Error al cargar los servicios. Por favor, intenta nuevamente.',
+      error_network: 'Error al cargar los servicios. Por favor, verifica tu conexión a internet.',
+      not_found: 'No se encontraron servicios'
+    },
+    history: {
+      title: 'Historial Reciente',
+      completed: 'COMPLETADO',
+      pending: 'PENDIENTE',
+      empty_title: 'Sin historial aún',
+      empty_description: 'Aún no has realizado ninguna cotización. ¡Explora nuestros servicios y agenda tu primera cita!',
+      empty_btn: 'Cotizar ahora'
+    },
+    nav: {
+      home: 'Inicio',
+      quote: 'Cotizar',
+      profile: 'Perfil'
+    }
   }
 }

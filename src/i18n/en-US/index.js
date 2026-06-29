@@ -15,6 +15,7 @@ export default {
     create_account: 'Create account',
     success_msg: 'Welcome to P&P Services',
     error_msg: 'Error logging in. Check your credentials.',
+    error_network: 'Error logging in. Please check your network connection.',
     language: 'Language',
     unverified_email: 'You must verify your email address before logging in. Check your inbox or request a new link.',
     verify_email_subject: 'Verify your email address',
@@ -66,5 +67,41 @@ export default {
     login: 'Log in',
     success_msg: 'Account created successfully',
     error_msg: 'Error creating account. Please check the data and try again.'
+  },
+  dashboard: {
+    welcome: {
+      greeting: 'Welcome back',
+      hello: 'Hello,'
+    },
+    new_project_card: {
+      label: 'New Project',
+      title: 'Quote Service',
+      description: 'Get an instant quote and book your appointment at our auto repair shop.',
+      btn: 'Start Quote'
+    },
+    services: {
+      title: 'Services',
+      subtitle: 'Select the service you want',
+      premium_title: 'Premium Services',
+      view_all: 'View all',
+      from: 'From',
+      featured: 'Featured',
+      error_msg: 'Error loading services. Please try again.',
+      error_network: 'Error loading services. Please check your internet connection.',
+      not_found: 'No services found'
+    },
+    history: {
+      title: 'Recent History',
+      completed: 'COMPLETED',
+      pending: 'PENDING',
+      empty_title: 'No history yet',
+      empty_description: 'You haven\'t made any quotes yet. Explore our services and book your first appointment!',
+      empty_btn: 'Get a quote now'
+    },
+    nav: {
+      home: 'Home',
+      quote: 'Quote',
+      profile: 'Profile'
+    }
   }
 }

@@ -13,6 +13,14 @@ export default async function auth(_to, _from, next) {
         return next('/login');
     }
 
+    if (!store.token) {
+        return next('/login');
+    }
+
+    if (store.loading) {
+        return next();
+    }
+
     const success = await store.fetchUser();
     if (success) {
         next();

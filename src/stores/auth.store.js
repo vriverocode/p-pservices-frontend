@@ -6,6 +6,7 @@ import { Platform } from 'quasar'; // Para detectar el entorno (Web vs Capacitor
 export const useAuthStore = defineStore('auth', () => {
     const user = ref(null);
     const token = ref(localStorage.getItem('auth_token') || null);
+    const loading = ref(true);
     const isAuthenticated = computed(() => !!user.value);
     const getUser = computed(() => user.value);
     const getToken = computed(() => token.value);
@@ -56,7 +57,6 @@ export const useAuthStore = defineStore('auth', () => {
                 return false;
             }
 
-            // Asegurarse de que el token esté en los headers de Axios
             api.defaults.headers.common['Authorization'] = `Bearer ${token.value}`;
 
             const response = await api.get('/api/user');
@@ -66,6 +66,8 @@ export const useAuthStore = defineStore('auth', () => {
             clearSession();
             console.log('Error al obtener el usuario:', error);
             return false;
+        } finally {
+            loading.value = false;
         }
     };
     const logout = async () => {
@@ -113,6 +115,7 @@ export const useAuthStore = defineStore('auth', () => {
     return {
         user,
         token,
+        loading,
         isAuthenticated,
         getUser,
         getToken,

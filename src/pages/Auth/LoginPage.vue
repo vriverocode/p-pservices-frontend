@@ -139,13 +139,12 @@ const login = async () => {
 
   } catch (error) {
     console.log('Error de Axios:', error.response)
-    if(error.response?.status == 403 && error.response?.data?.error == 'login.unverified_email') {
+    if(error.response && error.response?.status == 403 && error.response?.data?.error == 'login.unverified_email') {
       unverifiedEmail.value = form.email
       showVerificationModal.value = true
       return
     }
-    const notificationMessage = t(error.response?.data?.error);
-
+    const notificationMessage = t(error.response?.data?.error ?? 'login.error_network');
     $q.notify({
       type: 'negative',
       message: notificationMessage,
