@@ -68,6 +68,16 @@ export default {
     success_msg: 'Cuenta creada exitosamente',
     error_msg: 'Error al crear la cuenta. Verifica los datos e intenta nuevamente.'
   },
+  error404: {
+    title: 'Ruta No Encontrada',
+    description: 'Lo sentimos, la página que buscas no está disponible. Es posible que el enlace haya caducado o que el recurso se haya movido a una nueva ubicación.',
+    back_home: 'Volver al Inicio',
+    go_back: 'Regresar Anterior',
+    diagnostics: 'System Diagnostics: Lab-ID 404-ERR',
+    copyright: 'P&P Services © 2024',
+    session_inactive: 'Sesión Inactiva',
+    precision_core: 'Precision Engineering Core'
+  },
   dashboard: {
     welcome: {
       greeting: 'Bienvenido de nuevo',
@@ -85,6 +95,7 @@ export default {
       premium_title: 'Servicios Premium',
       view_all: 'Ver todos',
       from: 'Desde',
+      quote: 'A consultar',
       featured: 'Destacado',
       error_msg: 'Error al cargar los servicios. Por favor, intenta nuevamente.',
       error_network: 'Error al cargar los servicios. Por favor, verifica tu conexión a internet.',
@@ -102,6 +113,11 @@ export default {
       home: 'Inicio',
       quote: 'Cotizar',
       profile: 'Perfil'
+    },
+    ads: {
+      title: 'Promociones',
+      label: 'P&P Services',
+      learn_more: 'Ver más'
     }
   }
 }

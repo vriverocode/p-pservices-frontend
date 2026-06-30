@@ -35,7 +35,6 @@ defineProps({
   justify-content: center;
   font-size: 20px;
   font-weight: 700;
-
   box-shadow: 0px 0px 0px 1px rgba(17, 15, 15, 0.774);
 }
 .welcome-header {

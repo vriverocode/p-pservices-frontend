@@ -68,6 +68,16 @@ export default {
     success_msg: 'Account created successfully',
     error_msg: 'Error creating account. Please check the data and try again.'
   },
+  error404: {
+    title: 'Route Not Found',
+    description: 'Sorry, the page you\'re looking for is not available. The link may have expired or the resource may have been moved to a new location.',
+    back_home: 'Go Home',
+    go_back: 'Go Back',
+    diagnostics: 'System Diagnostics: Lab-ID 404-ERR',
+    copyright: 'P&P Services © 2024',
+    session_inactive: 'Session Inactive',
+    precision_core: 'Precision Engineering Core'
+  },
   dashboard: {
     welcome: {
       greeting: 'Welcome back',
@@ -85,6 +95,7 @@ export default {
       premium_title: 'Premium Services',
       view_all: 'View all',
       from: 'From',
+      quote: 'Quote required',
       featured: 'Featured',
       error_msg: 'Error loading services. Please try again.',
       error_network: 'Error loading services. Please check your internet connection.',
@@ -102,6 +113,11 @@ export default {
       home: 'Home',
       quote: 'Quote',
       profile: 'Profile'
+    },
+    ads: {
+      title: 'Promotions',
+      label: 'P&P Services',
+      learn_more: 'Learn more'
     }
   }
 }

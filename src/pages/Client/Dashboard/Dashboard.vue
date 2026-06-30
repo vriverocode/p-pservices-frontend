@@ -4,6 +4,11 @@
 
     <NewProjectCard @start-quote="handleStartQuote" />
 
+    <AdsCarousel
+      :ads="adsStore.ads"
+      :loading="adsStore.loading"
+    />
+
     <PremiumServicesSection
       :services="servicesStore.services"
       @view-all="handleViewAll"
@@ -19,13 +24,16 @@
 import { computed, onMounted } from 'vue'
 import { useAuthStore } from 'src/stores/auth.store'
 import { useServicesStore } from 'src/stores/services.store'
+import { useAdsStore } from 'src/stores/ads.store'
 import WelcomeHeader from 'src/components/dashboard/WelcomeHeader.vue'
 import NewProjectCard from 'src/components/dashboard/NewProjectCard.vue'
+import AdsCarousel from 'src/components/dashboard/AdsCarousel.vue'
 import PremiumServicesSection from 'src/components/dashboard/PremiumServicesSection.vue'
 import RecentHistorySection from 'src/components/dashboard/RecentHistorySection.vue'
 
 const authStore = useAuthStore()
 const servicesStore = useServicesStore()
+const adsStore = useAdsStore()
 
 const userName = computed(() => authStore.getUser?.name || 'Cliente')
 const userAvatar = computed(() => authStore.getUser?.avatar || '')
@@ -41,7 +49,8 @@ const handleViewAll = () => {
 onMounted(async () => {
   await Promise.all([
     servicesStore.fetchServices(),
-    servicesStore.fetchRecentHistory()
+    servicesStore.fetchRecentHistory(),
+    adsStore.fetchAds()
   ])
 })
 </script>

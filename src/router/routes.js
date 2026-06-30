@@ -48,6 +48,9 @@ const routes = [
   {
     path: '/:catchAll(.*)*',
     component: () => import('pages/ErrorNotFound.vue'),
+    meta: {
+      title: '404 - Página No Encontrada'
+    },
   },
 ]
 

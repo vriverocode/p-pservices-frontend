@@ -17,25 +17,49 @@
       <h3 class="service-card__title">{{ service.title }}</h3>
       <p class="service-card__description">{{ service.description }}</p>
       <div class="service-card__price-row">
-        <span class="service-card__from">{{ t('dashboard.services.from') }}</span>
-        <span class="service-card__price">${{ service.price }}</span>
+        <span class="service-card__from">{{ priceRange !== t('dashboard.services.quote') ? t('dashboard.services.from') : '' }}</span>
+        <span class="service-card__price">{{ priceRange }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-defineProps({
+const props = defineProps({
   service: {
     type: Object,
     required: true,
-    validator: (v) => v.title && v.description && v.price !== undefined
   }
 })
 
+const service = ref(props.service)
 const { t } = useI18n()
+
+const priceRange = computed(() => {
+  if (!service?.value?.pricing?.length) return t('dashboard.services.quote')
+
+  const validPrices = formatPriceRange(service.value.pricing)
+
+  if (!validPrices.length) return t('dashboard.services.quote')
+
+  return formatCurrency(validPrices[0]) 
+})
+
+const formatCurrency = (val) => {
+  return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2
+    }).format(val)
+}
+const formatPriceRange = (prices) => {
+  return prices.map(item => item.price)
+    .filter(price => price !== null && price !== undefined)
+    .map(Number)
+}
 </script>
 
 <style scoped lang="scss">

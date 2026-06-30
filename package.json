@@ -10,7 +10,7 @@
     "lint": "eslint -c ./eslint.config.js \"./src*/**/*.{js,cjs,mjs,vue}\"",
     "format": "prettier --write \"**/*.{js,vue,css,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0",
-    "dev": "quasar dev --host 192.168.1.234 --port 8051",
+    "dev": "quasar dev --host 192.168.1.246 --port 8051",
     "build": "quasar build",
     "postinstall": "quasar prepare"
   },

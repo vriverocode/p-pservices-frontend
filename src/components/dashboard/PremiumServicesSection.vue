@@ -1,6 +1,6 @@
 <template>
-  <section class="premium-section tw:pl-5">
-    <div class="premium-section__header tw:pl-3 tw:pr-5">
+  <section class="premium-section tw:pl-5 tw:pr-5">
+    <div class="premium-section__header tw:pl-3 ">
       <h2 class="premium-section__title">{{ t('dashboard.services.premium_title') }}</h2>
       <a class="premium-section__link" @click="$emit('viewAll')">
         {{ t('dashboard.services.view_all') }}
@@ -8,7 +8,7 @@
       </a>
     </div>
 
-    <div class="premium-section__scroll">
+    <div class="premium-section__scroll ">
       <ServiceCard
         v-for="service in services"
         :key="service.id"
@@ -78,14 +78,42 @@ const { t } = useI18n()
     margin: 0 0px;
     padding: 4px 0px 8px;
     scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(83, 99, 122, 0.25) transparent;
 
     &::-webkit-scrollbar {
-      display: none;
+      height: 4px;
+      display: block;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(83, 99, 122, 0.25);
+      border-radius: 10px;
     }
 
     > * {
       scroll-snap-align: start;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .premium-section {
+    &__scroll {
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      > * {
+        scroll-snap-align: start;
+      }
     }
   }
 }
