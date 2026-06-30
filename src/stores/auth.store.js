@@ -6,6 +6,7 @@ import { Platform } from 'quasar'; // Para detectar el entorno (Web vs Capacitor
 export const useAuthStore = defineStore('auth', () => {
     const user = ref(null);
     const token = ref(localStorage.getItem('auth_token') || null);
+    const loading = ref(true);
     const isAuthenticated = computed(() => !!user.value);
     const getUser = computed(() => user.value);
     const getToken = computed(() => token.value);
@@ -20,47 +21,43 @@ export const useAuthStore = defineStore('auth', () => {
             delete api.defaults.headers.common['Authorization'];
         }
     };
-
+    const rememberUserLogin = (credentials) => {
+        if (credentials.remember) {
+            localStorage.setItem('remember_email', credentials.email);
+        }
+    }
     const clearSession = () => {
         user.value = null;
         setToken(null);
     };
     const login = async (credentials) => {
         try {
-            if (!Platform.is.capacitor) {
-                await api.get('/sanctum/csrf-cookie');
-            }
-            const payload = {
-                ...credentials,
-                is_mobile: Platform.is.capacitor
-            };
+            const response = await api.post('/api/login', credentials);
 
-            const response = await api.post('/api/login', payload);
-
+            console.log(response)
+            rememberUserLogin(credentials);
             const responseData = response.data.data;
-
             user.value = responseData.user;
-
             if (responseData.token) {
                 setToken(responseData.token);
             }
 
             return responseData;
         } catch (error) {
+            console.log(error)
+
             clearSession();
             throw error;
         }
     };
     const fetchUser = async () => {
         try {
-            if (Platform.is.capacitor && !token.value) {
+            if (!token.value) {
                 clearSession();
                 return false;
             }
 
-            if (Platform.is.capacitor && token.value) {
-                api.defaults.headers.common['Authorization'] = `Bearer ${token.value}`;
-            }
+            api.defaults.headers.common['Authorization'] = `Bearer ${token.value}`;
 
             const response = await api.get('/api/user');
             user.value = response.data.data;
@@ -69,6 +66,8 @@ export const useAuthStore = defineStore('auth', () => {
             clearSession();
             console.log('Error al obtener el usuario:', error);
             return false;
+        } finally {
+            loading.value = false;
         }
     };
     const logout = async () => {
@@ -108,15 +107,22 @@ export const useAuthStore = defineStore('auth', () => {
         }
     };
 
+    const resendVerificationEmail = async (email) => {
+        await api.post('/api/email/resend', { email });
+        return true;
+    }
+
     return {
         user,
         token,
+        loading,
         isAuthenticated,
         getUser,
         getToken,
         login,
         register,
         fetchUser,
-        logout
+        logout,
+        resendVerificationEmail
     };
 });

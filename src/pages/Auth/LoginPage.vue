@@ -82,6 +82,12 @@
         {{ $t('login.create_account') }}
       </span>
     </div>
+
+    <!-- Email Verification Modal -->
+    <EmailVerificationModal 
+      v-model="showVerificationModal"
+      :email="unverifiedEmail"
+    />
   </div>
 </template>
 
@@ -91,6 +97,7 @@ import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
 import { useAuthStore } from 'src/stores/auth.store'
 import { useI18n } from 'vue-i18n'
+import EmailVerificationModal from 'src/components/auth/EmailVerificationModal.vue'
 
 const router = useRouter()
 const $q = useQuasar()
@@ -100,11 +107,13 @@ const { t } = useI18n()
 
 const loading = ref(false)
 const showPassword = ref(false)
+const showVerificationModal = ref(false)
+const unverifiedEmail = ref('')
 
 const form = reactive({
-  email: '',
+  email: localStorage.getItem('remember_email') || '',
   password: '',
-  remember: false
+  remember: localStorage.getItem('remember_email') ? true : false
 })
 
 const login = async () => {
@@ -124,14 +133,21 @@ const login = async () => {
       message: t('login.success_msg'),
       position: 'top-right'
     })
-    
-    router.push('/')
+    setTimeout(() => {
+      router.push('/dashboard')
+    }, 1000);
 
   } catch (error) {
-    console.error(error)
+    console.log('Error de Axios:', error.response)
+    if(error.response && error.response?.status == 403 && error.response?.data?.error == 'login.unverified_email') {
+      unverifiedEmail.value = form.email
+      showVerificationModal.value = true
+      return
+    }
+    const notificationMessage = t(error.response?.data?.error ?? 'login.error_network');
     $q.notify({
       type: 'negative',
-      message: error.response?.data?.message || t('login.error_msg'),
+      message: notificationMessage,
       position: 'bottom'
     })
   } finally {

@@ -15,7 +15,26 @@ export default {
     create_account: 'Crear cuenta',
     success_msg: 'Bienvenido a P&P Services',
     error_msg: 'Error al iniciar sesión. Verifica tus credenciales.',
-    language: 'Idioma'
+    error_network: 'Error al iniciar sesión. Por favor, verifica tu conexión a internet.',
+    language: 'Idioma',
+    unverified_email: 'Debes verificar tu correo electrónico antes de iniciar sesión. Revisa tu bandeja de entrada o solicita un nuevo enlace.',
+    verify_email_subject: 'Verifica tu dirección de correo electrónico',
+    resend_verification_email_subject: 'Reenviar verificación de correo electrónico',
+    email_verified_success: '¡Correo electrónico verificado exitosamente!',
+    email_verification_expired: 'El enlace de verificación ha expirado.',
+    email_verification_invalid: 'El enlace de verificación es inválido o ha expirado.',
+    email_verification_already_verified: 'Tu correo electrónico ya ha sido verificado.',
+    email_verification_link_not_found: 'No se encontró el enlace de verificación.',
+    email_verification_user_not_found: 'No se encontró ningún usuario con este enlace de verificación.',
+    email_verification_generic_error: 'Ocurrió un error inesperado al verificar el correo electrónico.',
+    verification_modal: {
+      title: 'Correo no verificado',
+      description: 'Debes verificar tu correo electrónico antes de continuar. Haz clic en el botón para reenviar el enlace de verificación.',
+      resend_btn: 'Reenviar código de verificación',
+      close_btn: 'Cerrar',
+      success_msg: 'Enlace de verificación reenviado exitosamente',
+      error_msg: 'Error al reenviar el enlace de verificación'
+    },
   },
   register: {
     title: 'Crear Cuenta',
@@ -48,5 +67,57 @@ export default {
     login: 'Inicia sesión',
     success_msg: 'Cuenta creada exitosamente',
     error_msg: 'Error al crear la cuenta. Verifica los datos e intenta nuevamente.'
+  },
+  error404: {
+    title: 'Ruta No Encontrada',
+    description: 'Lo sentimos, la página que buscas no está disponible. Es posible que el enlace haya caducado o que el recurso se haya movido a una nueva ubicación.',
+    back_home: 'Volver al Inicio',
+    go_back: 'Regresar Anterior',
+    diagnostics: 'System Diagnostics: Lab-ID 404-ERR',
+    copyright: 'P&P Services © 2024',
+    session_inactive: 'Sesión Inactiva',
+    precision_core: 'Precision Engineering Core'
+  },
+  dashboard: {
+    welcome: {
+      greeting: 'Bienvenido de nuevo',
+      hello: 'Hola,'
+    },
+    new_project_card: {
+      label: 'Nuevo proyecto',
+      title: 'Cotizar Servicio',
+      description: 'Obtén una cotización al instante y asegura tu cita en nuestro taller automotriz.',
+      btn: 'Iniciar cotización'
+    },
+    services: {
+      title: 'Servicios',
+      subtitle: 'Selecciona el servicio que deseas',
+      premium_title: 'Servicios Premium',
+      view_all: 'Ver todos',
+      from: 'Desde',
+      quote: 'A consultar',
+      featured: 'Destacado',
+      error_msg: 'Error al cargar los servicios. Por favor, intenta nuevamente.',
+      error_network: 'Error al cargar los servicios. Por favor, verifica tu conexión a internet.',
+      not_found: 'No se encontraron servicios'
+    },
+    history: {
+      title: 'Historial Reciente',
+      completed: 'COMPLETADO',
+      pending: 'PENDIENTE',
+      empty_title: 'Sin historial aún',
+      empty_description: 'Aún no has realizado ninguna cotización. ¡Explora nuestros servicios y agenda tu primera cita!',
+      empty_btn: 'Cotizar ahora'
+    },
+    nav: {
+      home: 'Inicio',
+      quote: 'Cotizar',
+      profile: 'Perfil'
+    },
+    ads: {
+      title: 'Promociones',
+      label: 'P&P Services',
+      learn_more: 'Ver más'
+    }
   }
 }
