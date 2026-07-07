@@ -2,7 +2,7 @@
   <nav class="bottom-nav">
     <div class="bottom-nav__tabs">
       <button
-        v-for="tab in tabs"
+        v-for="tab in filteredTabs"
         :key="tab.name"
         :class="['bottom-nav__tab', { 'bottom-nav__tab--active': activeTab === tab.name }]"
         @click="navigateTo(tab.name)"
@@ -19,27 +19,41 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
-const emit = defineEmits(['navigate'])
+const props = defineProps({
+  role: { type: String, default: null }
+})
 
 const router = useRouter()
 const { t } = useI18n()
 const activeTab = ref('inicio')
 
-const tabs = computed(() => [
-  { name: 'inicio', icon: 'home', label: t('dashboard.nav.home') },
-  { name: 'cotizar', icon: 'grid_view', label: t('dashboard.nav.quote') },
-  { name: 'perfil', icon: 'person', label: t('dashboard.nav.profile') }
-])
+const tabs = computed(() => {
+  const base = [
+    { name: 'inicio', icon: 'home', label: t('dashboard.nav.home') },
+    { name: 'cotizar', icon: 'grid_view', label: t('dashboard.nav.quote') },
+    { name: 'perfil', icon: 'person', label: t('dashboard.nav.profile') }
+  ]
+
+  if (props.role === 'Admin') {
+    base.splice(2, 0, { name: 'agenda', icon: 'calendar_month', label: 'Agenda' })
+    base.push({ name: 'admin', icon: 'settings', label: 'Admin' })
+  }
+
+  return base
+})
+
+const filteredTabs = computed(() => tabs.value)
 
 const routes = {
   inicio: '/dashboard',
   cotizar: '/cotizar',
-  perfil: '/profile'
+  perfil: '/profile',
+  agenda: '/admin/agenda',
+  admin: '/admin/dashboard'
 }
 
 const navigateTo = (name) => {
   activeTab.value = name
-  emit('navigate', name)
   if (routes[name]) {
     router.push(routes[name])
   }
