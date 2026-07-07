@@ -24,7 +24,7 @@
         v-for="ad in ads"
         :key="ad.id"
         :name="ad.id"
-        class="ads-carousel__slide"
+        class="ads-carousel__slide py-5"
       >
         <div class="ads-carousel__banner" :style="{ backgroundColor: ad.bg_color || '#162438' }">
           <div class="ads-carousel__banner-text">
