@@ -58,6 +58,12 @@ const routes = [
         meta: { title: 'Catálogo Vehículos' },
         beforeEnter: admin,
       },
+      {
+        path: 'admin/workspaces',
+        component: () => import('pages/Admin/AdminWorkspacesPage.vue'),
+        meta: { title: 'Talleres' },
+        beforeEnter: admin,
+      },
     ],
   },
   {
@@ -112,6 +118,12 @@ const routes = [
         path: 'admin/services/:id/pricing',
         component: () => import('pages/Admin/ServicePricingPage.vue'),
         meta: { title: 'Precios' },
+        beforeEnter: admin,
+      },
+      {
+        path: 'admin/workspaces/:id/schedules',
+        component: () => import('pages/Admin/WorkspaceSchedulePage.vue'),
+        meta: { title: 'Horarios' },
         beforeEnter: admin,
       },
     ],
