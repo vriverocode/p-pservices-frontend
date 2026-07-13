@@ -3,7 +3,7 @@
     <div class="ads-carousel__header">
       <h2 class="ads-carousel__title">{{ t('dashboard.ads.title') }}</h2>
     </div>
-    <div v-if="loading" class="ads-carousel__loading">
+    <div v-if="loading || ads.length === 0" class="ads-carousel__loading">
       <q-spinner-dots color="primary" size="30px" />
     </div>
     <q-carousel
@@ -70,12 +70,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-defineProps({
+const props = defineProps({
   ads: { type: Array, default: () => [] },
-  loading: { type: Boolean, default: false }
+  loading: { type: Boolean, default: true }
 })
 
 const { t } = useI18n()
@@ -85,14 +85,20 @@ const slide = ref(null)
 const openTarget = (url) => {
   window.open(url, '_blank')
 }
+
+watch(() => props.ads, (newAds) => {
+  if (newAds && newAds.length > 0 && !slide.value) {
+    slide.value = newAds[0].id
+  }
+}, { immediate: true })
 </script>
 
 <style scoped lang="scss">
 .ads-carousel {
-  margin-top: 24px;
+  margin-top: 20px;
 
   &__header {
-    margin-bottom: 14px;
+    margin-bottom: 0px;
   }
 
   &__title {
@@ -142,7 +148,8 @@ const openTarget = (url) => {
     align-items: center;
     border-radius: 16px;
     overflow: hidden;
-    max-height: 150px;
+    height: max-content;
+    max-height: 180px;
     position: relative;
   }
 

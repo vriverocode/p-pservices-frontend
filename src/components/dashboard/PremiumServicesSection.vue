@@ -1,6 +1,6 @@
 <template>
   <section class="premium-section tw:pl-5 tw:pr-5">
-    <div class="premium-section__header tw:pl-3 ">
+    <div class="premium-section__header tw:pl-1 ">
       <h2 class="premium-section__title">{{ t('dashboard.services.premium_title') }}</h2>
       <a class="premium-section__link" @click="$emit('viewAll')">
         {{ t('dashboard.services.view_all') }}

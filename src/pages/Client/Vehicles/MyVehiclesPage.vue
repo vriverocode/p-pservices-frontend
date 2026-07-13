@@ -52,6 +52,7 @@ const setPrimary = async (vehicle) => {
     await store.fetchVehicles()
     $q.notify({ type: 'positive', message: 'Vehículo principal actualizado' })
   } catch (e) {
+    console.log(e)
     $q.notify({ type: 'negative', message: 'Error al actualizar' })
   }
 }

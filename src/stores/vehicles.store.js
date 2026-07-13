@@ -7,6 +7,7 @@ export const useVehiclesStore = defineStore('vehicles', () => {
   const vehicleTypes = ref([])
   const vehicleMakes = ref([])
   const vehicleModels = ref([])
+  const vehicleCategories = ref([])
   const loading = ref(false)
   const selectedVehicle = ref(null)
 
@@ -40,6 +41,17 @@ export const useVehiclesStore = defineStore('vehicles', () => {
   const setPrimaryVehicle = async (id) => {
     const response = await api.patch(`/api/vehicles/${id}/primary`)
     return response.data.data
+  }
+
+  const fetchVehicleCategories = async () => {
+    try {
+      const response = await api.get('/api/vehicle-categories')
+      vehicleCategories.value = response.data.data
+      return response.data.data
+    } catch (error) {
+      console.error('Error fetching vehicle categories:', error)
+      return []
+    }
   }
 
   // --- Admin: catalog ---
@@ -116,8 +128,9 @@ export const useVehiclesStore = defineStore('vehicles', () => {
   }
 
   return {
-    vehicles, vehicleTypes, vehicleMakes, vehicleModels, loading, selectedVehicle,
+    vehicles, vehicleTypes, vehicleMakes, vehicleModels, vehicleCategories, loading, selectedVehicle,
     fetchVehicles, createVehicle, updateVehicle, deleteVehicle, setPrimaryVehicle,
+    fetchVehicleCategories,
     fetchVehicleTypes, createVehicleType, updateVehicleType, deleteVehicleType,
     fetchVehicleMakes, createVehicleMake, updateVehicleMake, deleteVehicleMake,
     fetchVehicleModels, createVehicleModel, updateVehicleModel, deleteVehicleModel,

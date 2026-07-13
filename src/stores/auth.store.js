@@ -73,7 +73,8 @@ export const useAuthStore = defineStore('auth', () => {
     };
     const logout = async () => {
         try {
-            await api.post('/api/logout');
+            const reponse = await api.post('/api/logout');
+            return reponse.data;
         } catch (error) {
             console.warn('Error en backend durante logout, forzando cierre local...', error);
         } finally {

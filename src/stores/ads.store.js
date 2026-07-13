@@ -14,7 +14,9 @@ export const useAdsStore = defineStore('ads', () => {
     } catch (error) {
       console.error('Error fetching ads:', error)
     } finally {
-      loading.value = false
+      setTimeout(() => {
+        loading.value = false
+      }, 2000);
     }
   }
 

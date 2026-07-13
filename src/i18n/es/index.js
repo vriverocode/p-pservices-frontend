@@ -119,5 +119,52 @@ export default {
       label: 'P&P Services',
       learn_more: 'Ver más'
     }
+  },
+  admin: {
+    services: {
+      title: 'Servicios',
+      new_service: 'Nuevo Servicio',
+      edit_service: 'Editar Servicio',
+      name: 'Nombre',
+      description: 'Descripción',
+      active: 'Activo',
+      inactive: 'Inactivo',
+      sort_order: 'Orden',
+      requires_quote: 'Requiere cotización',
+      configurable_options: 'Opciones configurables',
+      thumbnail: 'Imagen',
+      save: 'Guardar',
+      cancel: 'Cancelar',
+      delete_confirm: '¿Eliminar servicio?',
+      saved: 'Servicio guardado',
+      deleted: 'Servicio eliminado',
+      pricing: 'Precios',
+      pricing_title: 'Precios por categoría',
+      price: 'Precio',
+      duration: 'Duración (min)',
+      vehicle_category: 'Categoría vehículo',
+      add_pricing: 'Agregar precio',
+      no_pricing: 'Sin precios configurados'
+    }
+  },
+  services_page: {
+    title: 'Todos los servicios',
+    subtitle: 'Selecciona el servicio que deseas',
+    from: 'Desde',
+    quote: 'A consultar',
+    book: 'Reservar',
+    price_for: 'Precio para',
+    select_vehicle: 'Selecciona un vehículo',
+    no_vehicles: 'No tienes vehículos registrados',
+    not_found: 'No se encontraron servicios'
+  },
+  profile: {
+    my_vehicles: 'Mis vehiculos',
+    service_history: 'Historial de servicios',
+    schedule: 'Agenda',
+    my_data: 'Mis datos',
+    terms_conditions: 'Términos y condiciones',
+    customer_support: 'Atención al cliente',
+    logout: 'Cerrar sesión'
   }
 }

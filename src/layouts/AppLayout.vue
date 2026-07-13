@@ -2,7 +2,11 @@
   <q-layout view="lHh Lpr lFf">
     <q-page-container>
       <div class="layout-wrapper">
-        <router-view />
+        <router-view v-slot="{ Component }">
+          <transition name="fade" mode="out-in">
+            <component :is="Component" />
+          </transition>
+        </router-view>
       </div>
     </q-page-container>
     <BottomNavBar :role="authStore.userRole" />

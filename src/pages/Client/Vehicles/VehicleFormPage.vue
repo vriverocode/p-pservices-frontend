@@ -79,7 +79,7 @@ const filteredModels = computed(() => {
 })
 
 const onTypeChange = () => {
-  form.vehicle_type_id = form.vehicle_type_id
+  form.vehicle_type_id = Number(form.vehicle_type_id)
   form.vehicle_make_id = null
   form.vehicle_model_id = null
   store.fetchVehicleModels({ type_id: form.vehicle_type_id })
@@ -102,6 +102,7 @@ const saveVehicle = async () => {
     }
     router.push('/vehicles')
   } catch (e) {
+    console.log(e)
     $q.notify({ type: 'negative', message: 'Error al guardar vehículo' })
   } finally {
     saving.value = false

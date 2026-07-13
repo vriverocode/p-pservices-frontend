@@ -30,11 +30,12 @@ import NewProjectCard from 'src/components/dashboard/NewProjectCard.vue'
 import AdsCarousel from 'src/components/dashboard/AdsCarousel.vue'
 import PremiumServicesSection from 'src/components/dashboard/PremiumServicesSection.vue'
 import RecentHistorySection from 'src/components/dashboard/RecentHistorySection.vue'
+import { useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
 const servicesStore = useServicesStore()
 const adsStore = useAdsStore()
-
+const router = useRouter()
 const userName = computed(() => authStore.getUser?.name || 'Cliente')
 const userAvatar = computed(() => authStore.getUser?.avatar || '')
 
@@ -43,6 +44,7 @@ const handleStartQuote = () => {
 }
 
 const handleViewAll = () => {
+  router.push('/services')
   console.log('Ver todos los servicios')
 }
 

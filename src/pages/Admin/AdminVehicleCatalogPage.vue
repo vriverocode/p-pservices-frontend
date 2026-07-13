@@ -208,6 +208,7 @@ const saveType = async () => {
     await store.fetchVehicleTypes()
     $q.notify({ type: 'positive', message: 'Tipo guardado' })
   } catch (e) {
+    console.log(e) 
     $q.notify({ type: 'negative', message: 'Error al guardar tipo' })
   }
 }
@@ -243,6 +244,7 @@ const saveMake = async () => {
     await store.fetchVehicleMakes()
     $q.notify({ type: 'positive', message: 'Marca guardada' })
   } catch (e) {
+    console.log(e)
     $q.notify({ type: 'negative', message: 'Error al guardar marca' })
   }
 }
@@ -284,6 +286,7 @@ const saveModel = async () => {
     await store.fetchVehicleModels()
     $q.notify({ type: 'positive', message: 'Modelo guardado' })
   } catch (e) {
+    console.log(e)
     $q.notify({ type: 'negative', message: 'Error al guardar modelo' })
   }
 }
