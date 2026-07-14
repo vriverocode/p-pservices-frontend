@@ -15,7 +15,7 @@
               <q-select 
                 v-model="currentLocale" 
                 :options="localeOptions" 
-                dense ºººº
+                dense
                 emit-value 
                 outlined
                 map-options 

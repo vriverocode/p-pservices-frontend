@@ -29,7 +29,9 @@
       <div class="q-mt-xl">
         <div class="row justify-between items-center q-mb-xs">
           <div class="text-subtitle2 text-weight-bold text-grey-9" style="font-size: 0.85rem; letter-spacing: 0.5px;">{{ $t('login.password_label') }}</div>
-          <a href="#" class="text-caption text-primary cursor-pointer text-decoration-none">{{ $t('login.forgot_password') }}</a>
+          <div @click="router.push('/forgot-password')" class="text-caption text-primary cursor-pointer text-decoration-none">
+            {{ $t('login.forgot_password') }}
+          </div>
         </div>
         <q-input 
           v-model="form.password" 

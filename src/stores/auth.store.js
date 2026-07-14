@@ -114,6 +114,16 @@ export const useAuthStore = defineStore('auth', () => {
         return true;
     }
 
+    const forgotPassword = async (email) => {
+        const response = await api.post('/api/forgot-password', { email });
+        return response.data;
+    }
+
+    const resetPassword = async (data) => {
+        const response = await api.post('/api/reset-password', data);
+        return response.data;
+    }
+
     return {
         user,
         token,
@@ -126,6 +136,8 @@ export const useAuthStore = defineStore('auth', () => {
         register,
         fetchUser,
         logout,
-        resendVerificationEmail
+        resendVerificationEmail,
+        forgotPassword,
+        resetPassword
     };
 });

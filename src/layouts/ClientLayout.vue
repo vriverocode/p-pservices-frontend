@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf" class="tw:h-screen tw:overflow-hidden">
+  <q-layout view="lHh Lpr lFf" class="tw:h-screen tw:overflow-hidden layout-wrapper">
     <q-page-container class="tw:h-full">
       <div 
         class="client-header tw:py-4 tw:px-3" 
@@ -13,7 +13,7 @@
           :style="{ color: route.name === 'profile' ? 'white' : '#111827' }"
         >{{ route.meta.title }}</span>
       </div>
-      <div class="layout-wrapper" style="height: 90%;">
+      <div class="" style="height: 90%;">
          <router-view v-slot="{ Component }">
             <transition name="fade" mode="out-in">
               <component :is="Component" />

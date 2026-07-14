@@ -1,6 +1,6 @@
 <template>
     <div class="profile-page tw:h-full bg-primary tw:flex tw:flex-col" >
-        <div class="tw:p-4 tw:w-full bg-primary">
+        <div class="tw:pt-4 tw:w-full bg-primary">
             <div class="avatarProfile tw:mx-auto">
                 {{ user?.name.charAt(0).toUpperCase() }}
             </div>
@@ -9,46 +9,46 @@
                 <p class="tw:text-white">{{ user?.email }}</p>
             </div>
         </div>
-        <div class="content__profile tw:pt-12 tw:px-5 tw:flex tw:flex-col tw:flex-1 tw:pb-10" >
+        <div class="content__profile tw:pt-2 tw:px-5 tw:flex tw:flex-col tw:flex-1 tw:pb-10" style="overflow: auto;" >
 
-            <div class="optionContent  tw:mt-5 tw:py-4 tw:px-4">
-                <div class="flex justify-between items-center">
+            <div class="optionContent tw:py-0 tw:mt-4 tw:py-2">
+                <div class="flex justify-between items-center optionContent__item tw:py-4 tw:px-4">
                     {{ t('profile.my_vehicles') }}
                     <q-icon name="arrow_forward" />
                 </div>
             </div>
-            <div class="optionContent  tw:mt-5 tw:py-4 tw:px-4">
-                <div class="flex justify-between items-center">
+            <div class="optionContent tw:py-0 tw:mt-4 tw:py-2">
+                <div class="flex justify-between items-center optionContent__item tw:py-4 tw:px-4">
                     {{ t('profile.service_history') }}
                     <q-icon name="arrow_forward" />
                 </div>
-                <div class="flex justify-between items-center tw:mt-9">
+                <div class="flex justify-between items-center optionContent__item tw:py-4 tw:px-4 tw:mt-5">
                     {{ t('profile.schedule') }}
                     <q-icon name="arrow_forward" />
                 </div>
             </div>
-             <div class="optionContent  tw:mt-5 tw:py-4 tw:px-4">
-                <div class="flex justify-between items-center">
+             <div class="optionContent tw:py-0 tw:mt-4 tw:py-2 ">
+                <div class="flex justify-between items-center optionContent__item tw:py-4 tw:px-4">
                     {{ t('profile.my_data') }}
                     <q-icon name="arrow_forward" />
                 </div>
-                <!-- <div class="flex justify-between items-center tw:mt-9">
+                <!-- <div class="flex justify-between items-center optionContent__item tw:py-4 tw:px-4 tw:mt-5">
                     Planes
                     <q-icon name="arrow_forward" />
                 </div> -->
-                <div class="flex justify-between items-center tw:mt-9">
+                <div class="flex justify-between items-center optionContent__item tw:py-4 tw:px-4 tw:mt-5">
                     {{ t('profile.terms_conditions') }}
                     <q-icon name="arrow_forward" />
                 </div>
-                <div class="flex justify-between items-center tw:mt-9">
+                <div class="flex justify-between items-center optionContent__item tw:py-4 tw:px-4 tw:mt-5">
                     {{ t('profile.customer_support') }}
                     <q-icon name="arrow_forward" />
                 </div>
             </div>
-            <div class="optionContent  tw:mt-auto tw:py-4 tw:px-4 tw:text-red-600 tw:cursor-pointer"
+            <div class="optionContent tw:py-0  tw:mt-5 tw:text-red-600 tw:cursor-pointer"
             @click="logout()"
             >
-                <div class="flex justify-between items-center" v-if="!loadingLogout">
+                <div class="flex justify-between items-center optionContent__item tw:py-6 tw:px-4" v-if="!loadingLogout">
                     {{ t('profile.logout') }}
                     <q-icon name="logout" />
                 </div>
@@ -87,11 +87,18 @@ const logout = () => {
 
 }
 .optionContent{
-   
     background: rgb(241, 241, 241);
     border-radius: 1rem;
     font-weight: 500;
     font-size: 16px;
+    &__item{
+        transition: all 0.2s ease-in;
+        border-radius: 1rem;
+
+        &:hover{
+            background: rgba(97, 97, 97, 0.062);
+        }
+    }
 }
 .avatarProfile{
     height: 5rem; 

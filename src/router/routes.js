@@ -16,6 +16,14 @@ const routes = [
         path: '/register', component: () => import('pages/Auth/RegisterPage.vue'),
         meta: { title: 'Bienvenido' },
       },
+      {
+        path: '/forgot-password', component: () => import('pages/Auth/ForgotPassword.vue'),
+        meta: { title: 'Recuperar contraseña' },
+      },
+      {
+        path: '/reset-password', component: () => import('pages/Auth/ResetPassword.vue'),
+        meta: { title: 'Restablecer contraseña' },
+      },
     ],
   },
   {
